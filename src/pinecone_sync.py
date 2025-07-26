@@ -20,7 +20,7 @@ spec = ServerlessSpec(
 )
 
 index_name = 'product-catalog-index'
-existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
+existing_indexes = [index_info["``````````````````````````````````````````  name"] for index_info in pc.list_indexes()]
 
 # Check if index already exists (it shouldn't if this is the first time)
 if index_name not in existing_indexes:
