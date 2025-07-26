@@ -12,7 +12,7 @@ load_dotenv()
 
 
 # Pinecone configuration
-api_key = os.getenv("pcsk_3G7ufG_MPQYQuvVdbjRKm6bfLHcuQXyzCy3vCMoihJDitPR9KyGCib12CrWCf2jU15utni")
+api_key = os.getenv("PINECONE_API_KEY")
 pc = Pinecone(api_key=api_key)
 
 spec = ServerlessSpec(
@@ -20,7 +20,7 @@ spec = ServerlessSpec(
 )
 
 index_name = 'product-catalog-index'
-existing_indexes = [index_info["``````````````````````````````````````````  name"] for index_info in pc.list_indexes()]
+existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
 
 # Check if index already exists (it shouldn't if this is the first time)
 if index_name not in existing_indexes:
@@ -43,13 +43,13 @@ time.sleep(1)
 db_connection = mysql.connector.connect(
     host='localhost',
     user='root',
-    password= os.getenv('Rohan@4579'),
+    password= os.getenv('DB_PASSWORD'),
     database='product_catalog_db'
 )
 cursor = db_connection.cursor()
 
 # Google Generative AI API configuration
-os.environ["GOOGLE_API_KEY"] = os.getenv("AIzaSyBQgCyqZtXX-RWWLiSeQHK8iFBH19bfUUw")
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 embed_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
 def fetch_data():
