@@ -15,7 +15,7 @@ data = pd.read_csv(csv_file_path)
 db_connection = mysql.connector.connect(
     host='localhost',
     user='root',
-    password= os.getenv('Rohan@4579'),
+    password= os.getenv('DB_PASSWORD'),
     database='product_catalog_db'
 )
 
