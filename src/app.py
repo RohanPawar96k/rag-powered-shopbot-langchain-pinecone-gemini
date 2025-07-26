@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Pinecone configuration
-api_key = os.getenv("pcsk_3G7ufG_MPQYQuvVdbjRKm6bfLHcuQXyzCy3vCMoihJDitPR9KyGCib12CrWCf2jU15utni")
+api_key = os.getenv("PINECONE_API_KEY")
 pc = Pinecone(api_key=api_key)
 
 spec = ServerlessSpec(
@@ -26,7 +26,7 @@ myindex = pc.Index(index_name)
 time.sleep(1)
 
 # Set the Google API key
-google_api_key = os.getenv("AIzaSyBQgCyqZtXX-RWWLiSeQHK8iFBH19bfUUw")
+google_api_key = os.getenv("GOOGLE_API_KEY")
 
 # Initialize embeddings and vector store
 embed_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
@@ -50,7 +50,7 @@ system_message = (
 
 # Function to generate a response from Google Gemini
 def generate_answer(system_message, chat_history, prompt):
-    genai.configure(api_key=os.getenv("AIzaSyBQgCyqZtXX-RWWLiSeQHK8iFBH19bfUUw"))
+    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
     model = genai.GenerativeModel('gemini-pro')
 
     # Append the new prompt to the chat history
