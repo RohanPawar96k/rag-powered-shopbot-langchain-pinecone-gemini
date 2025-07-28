@@ -51,7 +51,7 @@ system_message = (
 # Function to generate a response from Google Gemini
 def generate_answer(system_message, chat_history, prompt):
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-1.5-pro')
 
     # Append the new prompt to the chat history
     chat_history.append(f"User: {prompt}")
